@@ -46,6 +46,21 @@ flutter pub get
 flutter run
 ```
 
+## Screenshots
+<div style="display: flex; gap: 16px;">
+  <img src="screenshots/image1.jpg" width="200" alt="Screenshot 1">
+  <img src="screenshots/image2.jpg" width="200" alt="Screenshot 2">
+  <img src="screenshots/image3.jpg" width="200" alt="Screenshot 3">
+</div>
+
+## Video
+
+[Watch the demo video here](https://github.com/jaydip-pawar/SpaceX-Rockets/blob/main/screenshots/video.mp4)
+
+## Release
+
+You can download the release APK from the [Releases](https://github.com/jaydip-pawar/SpaceX-Rockets/releases) section of this repository.
+
 ## Project Structure
 
 The project follows the following package structure:
@@ -69,4 +84,3 @@ The app follows the MVVM (Model-View-ViewModel) architecture pattern:
 - **ViewModel**: Manages the app's state and data flow. It communicates with the repository to fetch and provide data to the views. The view models implement the business logic of the app.
 
 The Provider package is used for state management and data sharing between the view models and views.
-
