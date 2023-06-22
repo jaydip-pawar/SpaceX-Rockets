@@ -7,9 +7,10 @@ class Routes {
   static MaterialPageRoute generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesName.rocketList:
-        return MaterialPageRoute(builder: (_) => RocketList());
+        return MaterialPageRoute(builder: (_) => const RocketList());
       case RoutesName.rocketDetails:
-        return MaterialPageRoute(builder: (_) => const RocketDetails());
+        final int index = settings.arguments as int;
+        return MaterialPageRoute(builder: (_) => RocketDetails(index: index));
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

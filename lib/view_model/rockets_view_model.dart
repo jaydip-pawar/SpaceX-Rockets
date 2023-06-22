@@ -10,7 +10,6 @@ class RocketViewModel with ChangeNotifier {
 
   setRocketList(ApiResponse<List<RocketListModel>> response) {
     rocketList = response;
-    notifyListeners();
   }
 
   Future<void> fetchRocketListApi() async {
@@ -19,6 +18,7 @@ class RocketViewModel with ChangeNotifier {
       final response = await _rocketRepo.rocketListApi();
       setRocketList(ApiResponse.completed(response));
     } catch (error) {
+      print("error: $error");
       setRocketList(ApiResponse.error(error.toString()));
     }
   }

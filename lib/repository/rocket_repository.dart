@@ -14,6 +14,7 @@ class RocketRepository {
       List<RocketListModel> rocketList = List<RocketListModel>.from(response.map((json) => RocketListModel.fromJson(json)));
       return rocketList;
     } catch (e) {
+      print(e);
       throw ParsingException("Type error");
     }
   }
