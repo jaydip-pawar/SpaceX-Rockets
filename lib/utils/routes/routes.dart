@@ -7,7 +7,7 @@ class Routes {
   static MaterialPageRoute generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesName.rocketList:
-        return MaterialPageRoute(builder: (_) => const RocketList());
+        return MaterialPageRoute(builder: (_) => RocketList());
       case RoutesName.rocketDetails:
         return MaterialPageRoute(builder: (_) => const RocketDetails());
       default:

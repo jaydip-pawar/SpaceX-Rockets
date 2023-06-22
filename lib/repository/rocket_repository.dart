@@ -1,3 +1,4 @@
+import 'package:spacex/data/app_exceptions.dart';
 import 'package:spacex/data/network/base_api_services.dart';
 import 'package:spacex/data/network/network_api_services.dart';
 import 'package:spacex/model/rocket_list_model.dart';
@@ -7,12 +8,13 @@ class RocketRepository {
 
   final BaseApiServices _apiServices = NetworkApiServices();
 
-  Future<RocketListModel> rocketListAPI() async {
+  Future<List<RocketListModel>> rocketListApi() async {
     try {
       dynamic response = await _apiServices.getGetApiResponse(AppUrl.rocketList);
-      return response = RocketListModel.fromJson(response);
+      List<RocketListModel> rocketList = List<RocketListModel>.from(response.map((json) => RocketListModel.fromJson(json)));
+      return rocketList;
     } catch (e) {
-      rethrow;
+      throw ParsingException("Type error");
     }
   }
 }

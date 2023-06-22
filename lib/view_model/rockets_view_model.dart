@@ -1,15 +1,25 @@
 import 'package:flutter/cupertino.dart';
+import 'package:spacex/data/response/api_response.dart';
+import 'package:spacex/model/rocket_list_model.dart';
 import 'package:spacex/repository/rocket_repository.dart';
 
-class RocketViewModel extends ChangeNotifier {
-
+class RocketViewModel with ChangeNotifier {
   final _rocketRepo = RocketRepository();
 
-  Future<dynamic> rocketList() async {
-    _rocketRepo.rocketListAPI().then((value) {
-      print(value.toString());
-    }).onError((error, stackTrace) {
-      print(error.toString());
-    });
+  ApiResponse<List<RocketListModel>> rocketList = ApiResponse.loading();
+
+  setRocketList(ApiResponse<List<RocketListModel>> response) {
+    rocketList = response;
+    notifyListeners();
+  }
+
+  Future<void> fetchRocketListApi() async {
+    setRocketList(ApiResponse.loading());
+    try {
+      final response = await _rocketRepo.rocketListApi();
+      setRocketList(ApiResponse.completed(response));
+    } catch (error) {
+      setRocketList(ApiResponse.error(error.toString()));
+    }
   }
 }

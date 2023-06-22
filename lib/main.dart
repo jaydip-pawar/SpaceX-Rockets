@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
 import 'package:spacex/utils/routes/routes.dart';
 import 'package:spacex/utils/routes/routes_name.dart';
+import 'package:spacex/view_model/rockets_view_model.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => RocketViewModel()),
+    ],
+    child: const MyApp(),
+  ),);
 }
 
 class MyApp extends StatelessWidget {
