@@ -18,7 +18,6 @@ class RocketViewModel with ChangeNotifier {
       final response = await _rocketRepo.rocketListApi();
       setRocketList(ApiResponse.completed(response));
     } catch (error) {
-      print("error: $error");
       setRocketList(ApiResponse.error(error.toString()));
     }
   }
